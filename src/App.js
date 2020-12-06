@@ -1,9 +1,11 @@
 import logo from './logo.svg';
 import React, { Component } from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import SignUp from './components/SignUp'
 import LogIn from './components/LogIn'
+import Map from './containers/Map'
 import './App.css';
 
 class App extends Component {
@@ -24,8 +26,10 @@ class App extends Component {
     .then(response => {
       if (response.data.logged_in) {
         this.handleLogin(response)
+        console.log(this.state)
       } else {
         this.handleLogout()
+        console.log(this.state)
       }
     })
     .catch(error => console.log('api errors:', error))
@@ -49,15 +53,19 @@ class App extends Component {
       <Router>
         <div className="App">
           Welcome to Places I've Been 
+          {/* if the user is not logged in, then display these links */}
           <Link to="/signup">Sign Up</Link>
           <Link to="/login">Log In</Link>
-
+          {/* otherwise, redirect to the user's profile page  */}
         <Switch>
-          <Route path="/signup">
+          <Route exact path="/signup">
             <SignUp />
           </Route>
-          <Route path="/login">
-            <LogIn />
+          <Route exact path="/login">
+            <LogIn handleLogin={this.handleLogin}/>
+          </Route>
+          <Route path="/map">
+            <Map />
           </Route>
         </Switch>
         </div>
@@ -68,6 +76,14 @@ class App extends Component {
 }
 
 export default App;
+
+// const mapStateToProps = (state) => {
+//   return {
+//     user: state.user
+//   }
+// }
+
+// export default connect(mapStateToProps, mapDispatchtoProps)(App);
 
 // function App() {
 //   return (
