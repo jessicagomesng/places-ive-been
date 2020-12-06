@@ -11,9 +11,9 @@ import reportWebVitals from './reportWebVitals';
 const store = createStore(rootReducer, applyMiddleware(thunk))
 
 ReactDOM.render(
-  <Provider store={store} />
+  <Provider store={store}>
     <App />
-  </Provider>
+  </Provider>,
     // <React.StrictMode>
   //   <App />
   // </React.StrictMode>,

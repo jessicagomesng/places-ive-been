@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 class LogIn extends Component {
     constructor(props) {
@@ -32,8 +32,8 @@ class LogIn extends Component {
         axios.post('http://localhost:3001/login', {user}, {withCredentials: true})
         .then(response => {
             if (response.data.logged_in) {
-                this.props.handleLogin(response.data)
-                this.redirect()
+                this.props.handleLogin(response.data);
+                // this.redirect()
             } else {
                 this.setState({
                     errors: response.data.errors
@@ -43,9 +43,9 @@ class LogIn extends Component {
         .catch(error => console.log('api_errors:', error))
     };
 
-    redirect = () => {
-        this.props.history.push('/')
-    }
+    // redirect = () => {
+    //     this.props.history.push('/map')
+    // }
 
     handleErrors = () => {
         return (

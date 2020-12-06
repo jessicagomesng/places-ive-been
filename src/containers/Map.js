@@ -6,6 +6,10 @@ class Map extends React.Component {
     // fetch request to countries index & get all countries 
     // if country.users includes the user id, then add an attribute to the rendered path that says "visited" or something
 
+    componentDidMount() {
+        console.log(this.props)
+        this.props.fetchCountries()
+    }
     render() {
         return (
             <div>

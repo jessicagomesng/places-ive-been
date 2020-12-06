@@ -2,52 +2,57 @@ import logo from './logo.svg';
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { fetchCountries } from './actions/countryActions'
+import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
 import SignUp from './components/SignUp'
 import LogIn from './components/LogIn'
 import Map from './containers/Map'
 import './App.css';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLoggedIn:false,
-      user: {}
-    };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     isLoggedIn:false,
+  //     user: {}
+  //   };
+  // }
 
-  componentDidMount() {
-    this.loginStatus() 
-  }
+  // componentDidMount() {
+  //   this.loginStatus() 
+  // }
 
-  loginStatus = () => {
-    axios.get('http://localhost:3001/logged_in', {withCredentials: true})
-    .then(response => {
-      if (response.data.logged_in) {
-        this.handleLogin(response)
-        console.log(this.state)
-      } else {
-        this.handleLogout()
-        console.log(this.state)
-      }
-    })
-    .catch(error => console.log('api errors:', error))
-  }
+  // loginStatus = () => {
+  //   axios.get('http://localhost:3001/logged_in', {withCredentials: true})
+  //   .then(response => {
+  //     if (response.data.logged_in) {
+  //       // this.handleLogin(response)
+  //       console.log(this.props)
+  //     } else {
+  //       this.handleLogout()
+  //       console.log(this.props)
+  //     }
+  //   })
+  //   .catch(error => console.log('api errors:', error))
+  // }
 
   handleLogin = (data) => {
-    this.setState({
-      isLoggedIn: true,
-      user: data.user
-    })
+    // this.setState({
+    //   isLoggedIn: true,
+    //   user: data.user
+    // })
+    this.props.logIn(data);
+    // this.loginStatus();
   }
 
   handleLogout = () => {
-    this.setState({
-      isLoggedIn: false,
-      user: {}
-    })
+    // this.setState({
+    //   isLoggedIn: false,
+    //   user: {}
+    // })
+    this.props.logOut();
   }
+  
   render() {
     return (
       <Router>
@@ -62,10 +67,11 @@ class App extends Component {
             <SignUp />
           </Route>
           <Route exact path="/login">
-            <LogIn handleLogin={this.handleLogin}/>
+            <LogIn handleLogin={this.handleLogin} />
           </Route>
           <Route path="/map">
-            <Map />
+            <Map fetchCountries={this.props.fetchCountries}/>
+            {/* {this.props.isLoggedIn ? <Map /> : <Redirect to="/login" />} */}
           </Route>
         </Switch>
         </div>
@@ -75,15 +81,25 @@ class App extends Component {
 
 }
 
-export default App;
+// export default App;
 
-// const mapStateToProps = (state) => {
-//   return {
-//     user: state.user
-//   }
-// }
+const mapStateToProps = (state) => {
+  return {
+    isLoggedIn: state.isLoggedIn,
+    user: state.user,
+    countries: state.countries,
+  }
+}
 
-// export default connect(mapStateToProps, mapDispatchtoProps)(App);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logIn: (data) => dispatch({ type: 'LOG_IN', payload: data }),
+    logOut: () => dispatch({ type: 'LOG_OUT' }),
+    fetchCountries: () => dispatch(fetchCountries())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 // function App() {
 //   return (
