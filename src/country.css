@@ -1,0 +1,12 @@
+path {
+    fill:pink;
+}
+
+path:hover {
+    cursor: crosshair;
+    fill: grey;
+}
+
+path.visited {
+    fill: purple;
+}

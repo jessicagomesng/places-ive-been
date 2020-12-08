@@ -2,12 +2,12 @@ import { combineReducers } from 'redux';
 
 import userReducer from './userReducer'
 import logInReducer from './logInReducer'
-import countriesReducer from './countriesReducer'
+import mapReducer from './mapReducer'
 
 const rootReducer = combineReducers({
     user: userReducer,
     isLoggedIn: logInReducer,
-    countries: countriesReducer
+    map: mapReducer
 });
 
 export default rootReducer;

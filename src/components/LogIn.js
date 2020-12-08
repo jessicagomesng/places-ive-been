@@ -2,9 +2,11 @@
 
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router';
+import { Link } from 'react-router-dom';
 
 class LogIn extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -22,6 +24,7 @@ class LogIn extends Component {
     };
 
     handleSubmit = (event) => {
+
         event.preventDefault()
         const { username, password } = this.state
         let user = {
@@ -29,23 +32,37 @@ class LogIn extends Component {
             password: password
         }
 
+        // this.props.logIn(user);
+        // this.redirect()
+
         axios.post('http://localhost:3001/login', {user}, {withCredentials: true})
         .then(response => {
-            if (response.data.logged_in) {
-                this.props.handleLogin(response.data);
-                // this.redirect()
-            } else {
-                this.setState({
-                    errors: response.data.errors
-                })
+            if (response.data.status === 200) {
+                sessionStorage.setItem('jwt', response.data.token)
             }
+            this.props.logIn(response.data)
+            this.redirect()
+            // else handle errors 
         })
-        .catch(error => console.log('api_errors:', error))
-    };
+    }
 
-    // redirect = () => {
-    //     this.props.history.push('/map')
-    // }
+    //     axios.post('http://localhost:3001/login', {user}, {withCredentials: true})
+    //     .then(response => {
+    //         if (response.data.logged_in) {
+    //             this.props.handleLogin(response.data);
+    //             // this.redirect()
+    //         } else {
+    //             this.setState({
+    //                 errors: response.data.errors
+    //             })
+    //         }
+    //     })
+    //     .catch(error => console.log('api_errors:', error))
+    // };
+
+    redirect = () => {
+        this.props.history.push('/map')
+    }
 
     handleErrors = () => {
         return (
@@ -68,14 +85,14 @@ class LogIn extends Component {
                     <label>Password:</label>
                     <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
                     <input type="submit" value="Log In"/>
-
                     <div>
                         Or <Link to="/signup">Sign Up</Link>
                     </div>
                 </form>
             </div>
         )
+        
     }
 }
 
-export default LogIn;
+export default withRouter(LogIn);

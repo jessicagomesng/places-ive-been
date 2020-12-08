@@ -1,8 +1,9 @@
-const countriesReducer = (state = { }, action) => {
+const mapReducer = (state = { countries: [], loading: false }, action) => {
     switch (action.type) {
         case "LOADING_COUNTRIES":
             return {
-                ...state, 
+                ...state,
+                countries: [...state.countries], 
                 loading: true
             }
 
@@ -18,4 +19,4 @@ const countriesReducer = (state = { }, action) => {
     }
 }
 
-export default countriesReducer;
+export default mapReducer;

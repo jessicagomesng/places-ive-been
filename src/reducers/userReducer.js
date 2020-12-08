@@ -1,11 +1,13 @@
 export default function userReducer(state = {}, action) {
     switch (action.type) {
         case "LOG_IN":
-            // debugger;
-            return action.payload.user
+            return action.user.user
 
         case "LOG_OUT":
             return {}
+
+        case "VISIT_COUNTRY":
+            return action.payload.user
 
         default:
             return state;
