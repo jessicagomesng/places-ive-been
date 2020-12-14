@@ -17,7 +17,7 @@ const pinReducer = (state = { pins: [] }, action) => {
         case 'ADD_PIN':
             return {
                 ...state,
-                pins: [state.pins, action.payload]
+                pins: [...state.pins, action.payload]
             }
 
         default: 

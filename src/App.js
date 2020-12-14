@@ -33,12 +33,13 @@ class App extends Component {
             {/* <Map fetchCountries={this.props.fetchCountries} visitCountry={this.props.visitCountry} map={this.props.map} user={this.props.user} logOut={this.props.logOut}/> */}
             {/* <AuthRoute path="/map" isLoggedIn={this.props.isLoggedIn} component={<Map isLoggedIn={this.props.isLoggedIn} fetchCountries={this.props.fetchCountries} visitCountry={this.props.visitCountry} map={this.props.map} user={this.props.user} logOut={this.props.logOut} />} />  */}
           {/* </Route> */}
+          <ProtectedRoute path="/pins" loggedIn={this.props.isLoggedIn} component={Pins} fetchCountries={this.props.fetchCountries} fetchPins={this.props.fetchPins} map={this.props.map} user={this.props.user} pins={this.props.pins} />
           <Route path="/add-a-pin">
             <PinMap fetchCountries={this.props.fetchCountries} map={this.props.map} user={this.props.user} addAPin={this.props.addAPin}/>
           </Route>
-          <Route path="/pins">
+          {/* <Route path="/pins">
             <Pins fetchCountries={this.props.fetchCountries} fetchPins={this.props.fetchPins} map={this.props.map} user={this.props.user} pins={this.props.pins}/>
-          </Route>
+          </Route> */}
         </Switch>
         </div>
       </Router>

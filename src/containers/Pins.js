@@ -10,6 +10,7 @@
 import React from 'react';
 import '../country.css';
 import Pin from '../components/Pin'
+import PinShow from '../components/PinShow'
 import { Route } from 'react-router-dom';
 
 class Pins extends React.Component { 
@@ -26,6 +27,7 @@ class Pins extends React.Component {
     componentDidMount() {
         // this.props.fetchCountries()
         this.props.fetchPins(this.props.user.id)
+        window.scrollTo(0, 0);
         let rect = this.mapRef.current.getBoundingClientRect();
 
         this.setState({
@@ -77,6 +79,7 @@ class Pins extends React.Component {
                 </svg>
 
                 {this.state.displayPins && this.renderPins()}
+                <Route path={`${this.props.match.url}/:pinId`} render={routerProps => <PinShow {...routerProps} pins={this.props.pins.pins} />} />
             </div>
         )
 
@@ -160,7 +163,7 @@ class Pins extends React.Component {
 
                     let x = (pin.xCoord * this.state.rect.width) + this.state.rect.left 
                     let y = (pin.yCoord * this.state.rect.height) + this.state.rect.top 
-                    return <Pin key={pin.id} xCoord={x} yCoord={y} caption={pin.caption} img={pin.img} id={pin.id}/>
+                    return <Pin key={pin.id} xCoord={x} yCoord={y} caption={pin.caption} img={pin.img} location={pin.location} id={pin.id}/>
                 }
                 )}
             </>
