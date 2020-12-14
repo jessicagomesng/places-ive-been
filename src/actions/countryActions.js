@@ -62,6 +62,20 @@ export const fetchCountries = () => {
     }
 }
 
+export const fetchPins = (userID) => {
+    return (dispatch) => {
+        dispatch({type: 'LOADING_PINS'})
+        fetch(`http://localhost:3001/users/${userID}/pins`, { credentials: 'include' })
+        .then(response => { 
+            return response.json()
+        })
+        .then(responseJSON => {
+            dispatch({type: 'ADD_PINS', pins: responseJSON})
+            console.log(responseJSON)
+        })
+    }
+}
+
 export const visitCountry = (userID, countryID) => {
     return (dispatch) => {
         let users_country = {
@@ -88,5 +102,15 @@ export const visitCountry = (userID, countryID) => {
         // .then(responseJSON => {
         //     console.log(responseJSON)
         // })
+    }
+}
+
+export const addAPin = (pin) => {
+    return (dispatch) => {
+        axios.post('http://localhost:3001/pins', {pin}, {withCredentials: true})
+        .then(response => {
+            console.log(response)
+            dispatch({type: 'ADD_PIN', payload: response.data})
+        })
     }
 }

@@ -30,6 +30,8 @@ class Home extends React.Component {
                     <Link to="/signup">Sign Up</Link>
                     <Link to="/login">Log In</Link>
                     <Link to="/logout" onClick={this.handleLogOut}>Log Out</Link>
+                    <Link to="/pins">View Pins</Link>
+                    <Link to="/add-a-pin">Add A Pin</Link>
                 </>
             )
         }
