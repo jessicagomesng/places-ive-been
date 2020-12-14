@@ -1,8 +1,5 @@
 import React from 'react';
-import MapForPins from './MapForPins';
-import Canvas from '../components/Canvas';
 import AddPin from '../components/AddPin'
-import TempMarker from '../components/TempMarker'
 
 class PinMap extends React.Component {
     constructor(props) {

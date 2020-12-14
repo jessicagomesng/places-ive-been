@@ -36,9 +36,9 @@ class App extends Component {
           <Route path="/add-a-pin">
             <PinMap fetchCountries={this.props.fetchCountries} map={this.props.map} user={this.props.user} addAPin={this.props.addAPin}/>
           </Route>
-          <Route path="/pins" render={routerProps => <Pins {...routerProps} fetchCountries={this.props.fetchCountries} fetchPins={this.props.fetchPins} map={this.props.map} user={this.props.user} pins={this.props.pins} />} />
-            {/* <Pins fetchCountries={this.props.fetchCountries} fetchPins={this.props.fetchPins} map={this.props.map} user={this.props.user} pins={this.props.pins}/>
-          </Route> */}
+          <Route path="/pins">
+            <Pins fetchCountries={this.props.fetchCountries} fetchPins={this.props.fetchPins} map={this.props.map} user={this.props.user} pins={this.props.pins}/>
+          </Route>
         </Switch>
         </div>
       </Router>
