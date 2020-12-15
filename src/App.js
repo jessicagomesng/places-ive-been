@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchCountries, visitCountry, fetchPins, addAPin } from './actions/countryActions'
+import { fetchCountries, visitCountry, fetchPins, addAPin, editPin, deletePin } from './actions/countryActions'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import SignUp from './components/SignUp'
 import Home from './components/Home'
@@ -33,10 +33,11 @@ class App extends Component {
             {/* <Map fetchCountries={this.props.fetchCountries} visitCountry={this.props.visitCountry} map={this.props.map} user={this.props.user} logOut={this.props.logOut}/> */}
             {/* <AuthRoute path="/map" isLoggedIn={this.props.isLoggedIn} component={<Map isLoggedIn={this.props.isLoggedIn} fetchCountries={this.props.fetchCountries} visitCountry={this.props.visitCountry} map={this.props.map} user={this.props.user} logOut={this.props.logOut} />} />  */}
           {/* </Route> */}
-          <ProtectedRoute path="/pins" loggedIn={this.props.isLoggedIn} component={Pins} fetchCountries={this.props.fetchCountries} fetchPins={this.props.fetchPins} map={this.props.map} user={this.props.user} pins={this.props.pins} />
-          <Route path="/add-a-pin">
+          <ProtectedRoute path="/pins" loggedIn={this.props.isLoggedIn} component={Pins} fetchCountries={this.props.fetchCountries} fetchPins={this.props.fetchPins} editPin={this.props.editPin} deletePin={this.props.deletePin} map={this.props.map} user={this.props.user} pins={this.props.pins} />
+          <ProtectedRoute path="/add-a-pin" loggedIn={this.props.isLoggedIn} component={PinMap} fetchCountries={this.props.fetchCountries} map={this.props.map} user={this.props.user} addAPin={this.props.addAPin} />
+          {/* <Route path="/add-a-pin">
             <PinMap fetchCountries={this.props.fetchCountries} map={this.props.map} user={this.props.user} addAPin={this.props.addAPin}/>
-          </Route>
+          </Route> */}
           {/* <Route path="/pins">
             <Pins fetchCountries={this.props.fetchCountries} fetchPins={this.props.fetchPins} map={this.props.map} user={this.props.user} pins={this.props.pins}/>
           </Route> */}
@@ -62,6 +63,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     // logIn: (data) => dispatch(logInUser(data)),
     addAPin: (pinData) => dispatch(addAPin(pinData)),
+    editPin: (pinData) => dispatch(editPin(pinData)),
+    deletePin: (pinId) => dispatch(deletePin(pinId)),
     logIn: (user) => dispatch({type: 'LOG_IN', user}),
     logOut: (data) => dispatch({type: 'LOG_OUT', data}),
     fetchCountries: () => dispatch(fetchCountries()),

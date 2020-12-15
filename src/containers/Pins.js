@@ -11,6 +11,7 @@ import React from 'react';
 import '../country.css';
 import Pin from '../components/Pin'
 import PinShow from '../components/PinShow'
+import EditPin from '../components/EditPin'
 import { Route } from 'react-router-dom';
 
 class Pins extends React.Component { 
@@ -25,7 +26,7 @@ class Pins extends React.Component {
     }
 
     componentDidMount() {
-        // this.props.fetchCountries()
+        this.props.fetchCountries()
         this.props.fetchPins(this.props.user.id)
         window.scrollTo(0, 0);
         let rect = this.mapRef.current.getBoundingClientRect();
@@ -79,7 +80,8 @@ class Pins extends React.Component {
                 </svg>
 
                 {this.state.displayPins && this.renderPins()}
-                <Route path={`${this.props.match.url}/:pinId`} render={routerProps => <PinShow {...routerProps} pins={this.props.pins.pins} />} />
+                <Route path={`${this.props.match.url}/:pinId`} render={routerProps => <PinShow {...routerProps} pins={this.props.pins.pins}  /> } />
+                <Route path={`${this.props.match.url}/:pinId/edit`} render={routerProps => <EditPin {...routerProps} pins={this.props.pins.pins} editPin={this.props.editPin} deletePin={this.props.deletePin} /> } />
             </div>
         )
 
