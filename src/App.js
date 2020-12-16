@@ -61,7 +61,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    // logIn: (data) => dispatch(logInUser(data)),
     addAPin: (pinData) => dispatch(addAPin(pinData)),
     editPin: (pinData) => dispatch(editPin(pinData)),
     deletePin: (pinId) => dispatch(deletePin(pinId)),
