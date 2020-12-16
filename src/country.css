@@ -10,3 +10,7 @@ path:hover {
 path.visited {
     fill: purple;
 }
+
+path.visited:hover { 
+    fill: grey;
+}

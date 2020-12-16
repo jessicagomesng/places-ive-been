@@ -46,11 +46,6 @@ class Map extends React.Component {
             </Route>
             <Link to="/map/mycountries">See My Countries</Link>
             <Link to="/map">Hide My Countries</Link>
-                Map goes here
-                <li>
-                    <ul>Fetch the user's data and use this to load the svg map. each path should have a className depending on if it's been visited.</ul>
-                    <ul>Render a blank map if needed. </ul>
-                </li>
             </div>
         )
     }
