@@ -9,39 +9,6 @@ const Map = (props) => {
         props.fetchCountries()
     }, [])
 
-    // const renderCountries = () => {
-    //     if (props.map.loading) { 
-    //         return (
-    //             <div>Loading Countries...</div>
-    //         )
-    //     } else {
-    //         return (
-    //         <div>
-    //             <svg xmlns="http://www.w3.org/2000/svg" width="1000" height="684" fill="#ececec" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="0.1" version="1.2">
-    //                 { props.map.countries.map( (country) => {
-    //                     let status;
-    //                     this.props.user.countries.find((userCountry) => userCountry.id === country.id) ? status = 'visited' : status = 'unvisited';
-    //                     return <Country key={country.id} country={country} userID={props.user.id} visitCountry={props.visitCountry} status={status} />
-    //                 } )}
-    //                 {/* { this.props.map.countries.map((country) => { return <Country key={country.id} country={country} userID={this.props.user.id} visitCountry={this.props.visitCountry} />})} */}
-    //                 {/* { this.props.map.countries.map((country) => { return <path key={country.id} d={country.path} id={country.abbreviation} name={country.name} />})} */}
-    //                 <circle cx="399.9" cy="390.8"></circle>
-    //                 <circle cx="575.4" cy="412"></circle>
-    //                 <circle cx="521" cy="266.6"></circle>
-    //             </svg> 
-
-    //             <Route path={`${props.match.url}/mycountries`}>
-    //                 <CountryList countries={props.user.countries} />
-    //             </Route>
-    //             <Link to="/map/mycountries">See My Countries</Link>
-    //             <Link to="/map">Hide My Countries</Link>
-    //         </div>
-    //         )
-    //     }
-    // }
-
-    // renderCountries()
-
     if (props.map.loading) { 
         return (
             <div>Loading Countries...</div>
