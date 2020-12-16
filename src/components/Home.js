@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
+import logo from '../logo.png';
 
 class Home extends React.Component {
 
@@ -17,24 +18,32 @@ class Home extends React.Component {
       }
 
     render() {
-        if (this.props.isLoggedIn === 'true') {
-            return (
-                <>
-                    <Link to="/map">Map</Link>
-                    <Link to="/logout">Log Out</Link>
-                </>
-            )
-        } else {
-            return (
-                <>
-                    <Link to="/signup">Sign Up</Link>
-                    <Link to="/login">Log In</Link>
-                    <Link to="/logout" onClick={this.handleLogOut}>Log Out</Link>
-                    <Link to="/pins">View Pins</Link>
-                    <Link to="/add-a-pin">Add A Pin</Link>
-                </>
-            )
-        }
+        // if (this.props.isLoggedIn === 'true') {
+        //     return (
+        //         <>
+        //             <Link to="/map">Map</Link>
+        //             <Link to="/logout">Log Out</Link>
+        //         </>
+        //     )
+        // } else {
+        return (
+            <>
+            <img src={logo} alt="Places I've Been logo" id="main-logo" />
+            <Link to="/signup">Sign Up</Link> 
+            <Link to="/login">Log In</Link>
+            </>
+        )
+        //     {/* return (
+        //         <>
+        //         <img src={logo} alt="Places I've Been logo"/>
+        //             <Link to="/signup">Sign Up</Link>
+        //             <Link to="/login">Log In</Link>
+        //             <Link to="/logout" onClick={this.handleLogOut}>Log Out</Link>
+        //             <Link to="/pins">View Pins</Link>
+        //             <Link to="/add-a-pin">Add A Pin</Link>
+        //         </>
+        //     )
+        // // } */}
     }
 }
 

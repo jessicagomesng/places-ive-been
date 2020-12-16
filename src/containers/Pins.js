@@ -8,7 +8,7 @@
 // Canvas, on load, should fetch all existing pins and display those
 // Click on a pin to see information about it (takes you to the show page) 
 import React from 'react';
-import '../country.css';
+import '../map.css';
 import Pin from '../components/Pin'
 import PinShow from '../components/PinShow'
 import EditPin from '../components/EditPin'
@@ -66,6 +66,7 @@ class Pins extends React.Component {
     render() {
         return (
             <div>
+                <p>Click on a pin to edit/delete, or hover over a pin to preview your memory!</p>
                 <svg xmlns="http://www.w3.org/2000/svg" width="1000" height="684" fill="#ececec" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="0.1" version="1.2" ref={this.mapRef}>
                     { this.props.map.countries.map( (country) => {
                         let status;

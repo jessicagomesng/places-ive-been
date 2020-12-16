@@ -2,7 +2,6 @@
 
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 
 class SignUp extends Component {
     constructor(props) {
@@ -79,9 +78,6 @@ class SignUp extends Component {
                     <label>Password Confirmation:</label>
                     <input type="password" name="password_confirmation" value={this.state.password_confirmation} onChange={this.handleChange}/>
                     <input type="submit" value="Sign Up" />
-                    <div>
-                        Or <Link to="/login">Log In</Link>
-                    </div>
                 </form>
             </div>
         )

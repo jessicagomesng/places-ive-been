@@ -2,7 +2,9 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
 import Country from '../components/Country.js'
-import CountryList from '../components/CountryList'
+import CountryList from '../components/CountryList';
+import '../map.css';
+
 
 const Map = (props) => {
     React.useEffect( () => {
@@ -17,7 +19,8 @@ const Map = (props) => {
         return (
         <div>
             <div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="1000" height="684" fill="#ececec" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="0.1" version="1.2">
+            <p>Click on a country to mark that you've visited it!</p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="1000" height="684" fill="#ececec" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="0.2" version="1.2">
                 { props.map.countries.map( (country) => {
                     let status;
                     props.user.countries.find((userCountry) => userCountry.id === country.id) ? status = 'visited' : status = 'unvisited';
@@ -35,8 +38,7 @@ const Map = (props) => {
             <Route path={`${props.match.url}/mycountries`}>
                 <CountryList countries={props.user.countries} />
             </Route>
-            <Link to="/map/mycountries">See My Countries</Link>
-            <Link to="/map">Hide My Countries</Link>
+            {props.location.pathname === '/map/mycountries' ? <Link to="/map">Hide My Countries</Link> : <Link to="/map/mycountries">See My Countries</Link>}
             </div>
         </div>
         )

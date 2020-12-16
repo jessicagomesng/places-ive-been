@@ -3,7 +3,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { withRouter } from 'react-router';
-import { Link } from 'react-router-dom';
 
 class LogIn extends Component {
 
@@ -92,9 +91,6 @@ class LogIn extends Component {
                     <label>Password:</label>
                     <input type="password" name="password" value={this.state.password} onChange={this.handleChange} required/>
                     <input type="submit" value="Log In"/>
-                    <div>
-                        Or <Link to="/signup">Sign Up</Link>
-                    </div>
                 </form>
             </div>
         )

@@ -1,5 +1,7 @@
 import React from 'react';
 import AddPin from '../components/AddPin'
+import pin from '../pin.png'
+
 
 class PinMap extends React.Component {
     constructor(props) {
@@ -22,8 +24,8 @@ class PinMap extends React.Component {
         this.setState({
             // showComponent: !this.state.showComponent,
             showImage: true,
-            xCoord: event.pageX - 15,
-            yCoord: event.pageY - 15
+            xCoord: event.pageX - 7.5,
+            yCoord: event.pageY - 39.55
             // components: [this.state.components, TempMarker, AddPin]
         })
         console.log(event.clientX, event.clientY)
@@ -64,10 +66,11 @@ class PinMap extends React.Component {
     render() {
         return (
             <div id="map-container">
-                <svg xmlns="http://www.w3.org/2000/svg" width="1000" height="684" fill="#ececec" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="0.1" version="1.2" onMouseDown={this._handleClick} ref={this.mapRef}>
+                <p>Click anywhere on the map to place your pin, then fill in the form to create your memory!</p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="1000" height="684" fill="#ececec" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="0.2" version="1.2" onMouseDown={this._handleClick} ref={this.mapRef}>
                     { this.props.map.countries.map( (country) => {
                         let status;
-                        this.props.user.countries.find((userCountry) => userCountry.id === country.id) ? status = 'visited' : status = 'unvisited';
+                        this.props.user.countries.find((userCountry) => userCountry.id === country.id) ? status = 'visited add-pin' : status = 'unvisited add-pin';
                         return <path key={country.id} d={country.path} id={country.abbreviation} name={country.name} className={status}/>
                     } )}
                     {/* { this.props.map.countries.map((country) => { return <Country key={country.id} country={country} userID={this.props.user.id} visitCountry={this.props.visitCountry} />})} */}
@@ -77,7 +80,7 @@ class PinMap extends React.Component {
                     <circle cx="521" cy="266.6"></circle>
                 </svg> 
                 
-                {this.state.showImage ? <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Empty_Star.svg/1200px-Empty_Star.svg.png' width='30' height='30' style={{position: 'absolute', top: this.state.yCoord + 'px', left: this.state.xCoord + 'px'}} ref={this.markerRef} /> : null }
+                {this.state.showImage ? <img src={pin} style={{position: 'absolute', top: this.state.yCoord + 'px', left: this.state.xCoord + 'px'}} ref={this.markerRef} className="pin" /> : null }
                 {this.state.showForm ? <AddPin addAPin={this.props.addAPin} userID={this.props.user.id} xPerc={this.state.xPerc} yPerc={this.state.yPerc} /> : null}
                 {/* What do I do? This is being created before xPerc is being set. How can I have this display only once xPerc is calculated?  */}
                 

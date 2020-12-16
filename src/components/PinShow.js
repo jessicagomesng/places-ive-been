@@ -8,8 +8,7 @@ const PinShow = ({match, pins}) => {
             <img src={pin.img} alt="your memory" />
             <h3>{ pin.location }</h3>
             <h4>{ pin.caption }</h4>
-            link to edit and delete 
-            <Link to={`${match.url}/edit`}>Edit</Link> 
+            <Link to={`${match.url}/edit`}>Edit/Delete Pin</Link> 
         </div>
     )
 }

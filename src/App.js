@@ -1,8 +1,9 @@
-import logo from './logo.svg';
+import logo from './logo.png';
+import axios from 'axios';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchCountries, visitCountry, fetchPins, addAPin, editPin, deletePin } from './actions/actionsIndex'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom';
 import SignUp from './components/SignUp'
 import Home from './components/Home'
 import LogIn from './components/LogIn'
@@ -10,17 +11,46 @@ import Map from './containers/Map'
 import PinMap from './containers/PinMap'
 import Pins from './containers/Pins'
 import ProtectedRoute from './ProtectedRoute'
+import PublicRoute from './PublicRoute'
 import './App.css';
 
 class App extends Component {
 
+  handleLogOut = () => {
+    axios.post('http://localhost:3001/logout', {withCredentials: true})
+    .then(response => {
+      sessionStorage.removeItem('jwt');
+      console.log(response);
+      this.props.logOut(response.data);
+      console.log(this.props)
+    })
+  }
 
   render() {
+    let {isLoggedIn} = this.props 
+
+    const renderNavBar = () => {
+      if (isLoggedIn) {
+        return (
+        <header>
+          <img src={logo} alt="Places I've Been logo" id="nav-logo" />
+          <nav>
+              <Link to="/map">Map</Link>
+              <Link to="/pins">View Pins</Link>
+              <Link to="/add-a-pin">Add Pin</Link>
+              <Link to="/logout" onClick={this.handleLogOut}>Log Out</Link>
+          </nav>
+        </header>)
+
+      }
+    }
+
     return (
       <Router>
         <div className="App">
-          Welcome to Places I've Been 
-          <Home isLoggedIn={this.props.isLoggedIn} logOut={this.props.logOut}/>
+          {renderNavBar()}
+          <PublicRoute path="/" loggedIn={this.props.isLoggedIn} component={Home} logOut={this.props.logOut} />
+
         <Switch>
           <Route exact path="/signup">
             <SignUp />
