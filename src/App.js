@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchCountries, visitCountry, fetchPins, addAPin, editPin, deletePin } from './actions/countryActions'
+import { fetchCountries, visitCountry, fetchPins, addAPin, editPin, deletePin } from './actions/actionsIndex'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import SignUp from './components/SignUp'
 import Home from './components/Home'
