@@ -38,10 +38,10 @@ class EditPin extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <input type="text" name="img" value={this.state.img} onChange={this.handleChange} />
-                <input type="text" name="caption" value={this.state.caption} onChange={this.handleChange} />
-                <input type="text" name="location" value={this.state.location} onChange={this.handleChange} />
+            <form onSubmit={this.handleSubmit} id="edit-pin">
+                <input type="text" name="img" value={this.state.img} onChange={this.handleChange} /><br />
+                <input type="text" name="caption" value={this.state.caption} onChange={this.handleChange} /><br />
+                <input type="text" name="location" value={this.state.location} onChange={this.handleChange} /><br />
                 <input type="submit" value="Edit Pin" />
                 <button onClick={this.handleDelete}>Delete</button>
             </form>

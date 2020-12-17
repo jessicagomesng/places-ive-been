@@ -1,4 +1,4 @@
-import logo from './logo.png';
+import logo from './css/images/logo.png';
 import axios from 'axios';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
@@ -12,7 +12,7 @@ import PinMap from './containers/PinMap'
 import Pins from './containers/Pins'
 import ProtectedRoute from './ProtectedRoute'
 import PublicRoute from './PublicRoute'
-import './App.css';
+import './css/App.css';
 
 class App extends Component {
 

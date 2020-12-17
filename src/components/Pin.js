@@ -1,6 +1,6 @@
 import React from 'react';
 import PinCard from './PinCard';
-import pin from '../pin.png'
+import pin from '../css/images/pin.png'
 import { Link } from 'react-router-dom';
 
 class Pin extends React.Component {

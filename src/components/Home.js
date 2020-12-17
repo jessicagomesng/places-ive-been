@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
-import logo from '../logo.png';
+import logo from '../css/images/logo.png';
 
 class Home extends React.Component {
 

@@ -85,11 +85,11 @@ class LogIn extends Component {
         return (
             <div>
                 {this.handleErrors()}
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit} id="login">
                     <label>Username:</label>
-                    <input type="text" name="username" value={this.state.username} onChange={this.handleChange} required/>
+                    <input type="text" name="username" value={this.state.username} onChange={this.handleChange} required/><br />
                     <label>Password:</label>
-                    <input type="password" name="password" value={this.state.password} onChange={this.handleChange} required/>
+                    <input type="password" name="password" value={this.state.password} onChange={this.handleChange} required/><br /> 
                     <input type="submit" value="Log In"/>
                 </form>
             </div>
