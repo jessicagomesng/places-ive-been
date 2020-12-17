@@ -77,6 +77,7 @@ class PinMap extends React.Component {
                 
                 {this.state.showImage ? <img src={pin} style={{position: 'absolute', top: this.state.yCoord + 'px', left: this.state.xCoord + 'px'}} ref={this.markerRef} className="pin" /> : null }
                 {this.state.showForm ? <AddPin addAPin={this.props.addAPin} userID={this.props.user.id} xPerc={this.state.xPerc} yPerc={this.state.yPerc} /> : null}
+            </div>
         )
     }
 }
