@@ -3,7 +3,7 @@ import AddPin from '../components/AddPin'
 import pin from '../css/images/pin.png'
 
 
-class PinMap extends React.Component {
+class AddPinMap extends React.Component {
     constructor(props) {
         super(props)
         this._handleClick = this._handleClick.bind(this)
@@ -82,4 +82,4 @@ class PinMap extends React.Component {
     }
 }
 
-export default PinMap;
+export default AddPinMap;

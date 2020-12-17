@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../css/images/logo.png';
 
-const Home = (props) => {
+const Home = () => {
   return (
     <>
       <img src={logo} alt="Places I've Been logo" id="main-logo" />

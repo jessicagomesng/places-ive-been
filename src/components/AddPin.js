@@ -33,7 +33,6 @@ class AddPin extends React.Component {
     }
 
     redirect = () => {
-        // redirect to pin show page 
         this.props.history.push('/pins')
     }
 
