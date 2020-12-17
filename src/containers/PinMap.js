@@ -12,7 +12,6 @@ class PinMap extends React.Component {
         this.state = {
             showForm: false,
             showImage: false,
-            components: [],
             xCoord: '',
             yCoord: '',
             xPerc: '',
@@ -22,11 +21,9 @@ class PinMap extends React.Component {
 
     _handleClick(event) {
         this.setState({
-            // showComponent: !this.state.showComponent,
             showImage: true,
             xCoord: event.pageX - 7.5,
             yCoord: event.pageY - 39.55
-            // components: [this.state.components, TempMarker, AddPin]
         })
         console.log(event.clientX, event.clientY)
         console.log(event.pageX, event.pageY)
