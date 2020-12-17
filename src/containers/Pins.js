@@ -31,7 +31,7 @@ class Pins extends React.Component {
     render() {
         return (
             <div>
-                <p class="instruction">Click on a pin to edit/delete, or hover over a pin to preview your memory!</p>
+                <p class="instruction">Click on a pin to view/edit/delete your memory!</p>
                 <svg xmlns="http://www.w3.org/2000/svg" width="1000" height="684" fill="#ececec" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="0.2" version="1.2" ref={this.mapRef}>
                     { this.props.map.countries.map( (country) => {
                         let status;
