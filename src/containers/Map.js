@@ -13,13 +13,13 @@ const Map = (props) => {
 
     if (props.map.loading) { 
         return (
-            <p class="instruction">Loading Countries...</p>
+            <p className="instruction">Loading Countries...</p>
         )
     } else {
         return (
         <div>
             <div>
-                <p class="instruction">Click on a country to mark that you've visited it!</p>
+                <p className="instruction">Click on a country to mark that you've visited it!</p>
                 <svg xmlns="http://www.w3.org/2000/svg" width="1000" height="684" fill="#ececec" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="0.2" version="1.2">
                     { props.map.countries.map( (country) => {
                         let status;

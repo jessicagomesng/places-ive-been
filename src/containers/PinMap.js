@@ -63,7 +63,7 @@ class PinMap extends React.Component {
     render() {
         return (
             <div id="map-container">
-                <p class="instruction">Click anywhere on the map to place your pin, then fill in the form to create your memory!</p>
+                <p className="instruction">Click anywhere on the map to place your pin, then fill in the form to create your memory!</p>
                 <svg xmlns="http://www.w3.org/2000/svg" width="1000" height="684" fill="#ececec" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="0.2" version="1.2" onMouseDown={this._handleClick} ref={this.mapRef}>
                     { this.props.map.countries.map( (country) => {
                         let status;
