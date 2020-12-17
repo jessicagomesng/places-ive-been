@@ -8,7 +8,9 @@ const PinShow = ({match, pins}) => {
             <img src={pin.img} alt="your memory" className="user-image"/>
             <h3>{ pin.location }</h3>
             <h4>{ pin.caption }</h4>
-            <Link to={`${match.url}/edit`}>Edit/Delete Pin</Link> 
+            <Link to={`${match.url}/edit`}>Edit/Delete Pin</Link><br />
+
+            <button onClick={() => window.scrollTo(0,0)} id="scroll-up" title="Go to top">^</button>
         </div>
     )
 }

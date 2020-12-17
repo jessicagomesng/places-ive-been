@@ -43,7 +43,7 @@ class Pin extends React.Component {
 
     render() {
         return (
-        <div>
+        <div className="preview">
             <div>
                 <Link to={`/pins/${this.props.id}`} ><img src={pin} alt="pin" ref={this.imgRef} onMouseEnter={this.handleMouseHover} onMouseLeave={this.handleMouseHover} onClick={this._onButtonClick} className="pin"/></Link>
             </div>

@@ -93,6 +93,11 @@ button, input[type="submit"] {
   width: 80px;
 }
 
+button#scroll-up {
+  width: 30px;
+  text-align: center;
+}
+
 p.instruction {
   font-style: italic;
 }
@@ -106,6 +111,11 @@ h3 {
 h4 { 
   font-family: 'quicksandlight';
   font-style: italic;
+}
+
+div.preview {
+  display: flex;
+  flex-direction: row;
 }
 
 img.user-image {
