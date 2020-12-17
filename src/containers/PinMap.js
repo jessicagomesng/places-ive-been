@@ -25,10 +25,10 @@ class PinMap extends React.Component {
             xCoord: event.pageX - 7.5,
             yCoord: event.pageY - 39.55
         })
+        window.scrollTo(0,document.body.scrollHeight);
         console.log(event.clientX, event.clientY)
         console.log(event.pageX, event.pageY)
         console.log(this.state.showImage)
-
     }
 
 

@@ -21,6 +21,7 @@ class Pin extends React.Component {
 
     _onButtonClick() {
         this.setState({ showComponent: true })
+        window.scrollTo(0,document.body.scrollHeight);
     }
 
     handleMouseHover() {
@@ -40,24 +41,13 @@ class Pin extends React.Component {
         img.style.top = this.props.yCoord + 'px';
     }
 
-    // handleClick() {
-    //     debugger;
-    //     return (
-    //         <form>
-    //             <input type="text" name="caption" placeholder="caption here" />
-    //         </form>
-    //     )
-    // }
-
     render() {
         return (
         <div>
             <div>
                 <Link to={`/pins/${this.props.id}`} ><img src={pin} alt="pin" ref={this.imgRef} onMouseEnter={this.handleMouseHover} onMouseLeave={this.handleMouseHover} onClick={this._onButtonClick} className="pin"/></Link>
             </div>
-            {/* { this.state.isHovering && <div>Hovering right meow!</div> } */}
             {this.state.isHovering && <PinCard caption={this.props.caption} img={this.props.img} location={this.props.location}/>}
-            {/* <Route path={`${this.props.match.url}/:pinId`} component={<PinCard caption={this.props.caption} img={this.props.img} />} /> */}
         </div>
         )
     }
