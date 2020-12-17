@@ -31,9 +31,6 @@ class LogIn extends Component {
             password: password
         }
 
-        // this.props.logIn(user);
-        // this.redirect()
-
         axios.post('http://localhost:3001/login', {user}, {withCredentials: true})
         .then(response => {
             if (response.data.status === 200) {
@@ -45,23 +42,8 @@ class LogIn extends Component {
                     errors: response.data.errors
                 })
             }
-            // else handle errors 
         })
     }
-
-    //     axios.post('http://localhost:3001/login', {user}, {withCredentials: true})
-    //     .then(response => {
-    //         if (response.data.logged_in) {
-    //             this.props.handleLogin(response.data);
-    //             // this.redirect()
-    //         } else {
-    //             this.setState({
-    //                 errors: response.data.errors
-    //             })
-    //         }
-    //     })
-    //     .catch(error => console.log('api_errors:', error))
-    // };
 
     redirect = () => {
         this.props.history.push('/map')
