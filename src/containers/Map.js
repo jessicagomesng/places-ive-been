@@ -3,7 +3,6 @@ import React from 'react';
 import { Route, Link } from 'react-router-dom';
 import Country from '../components/Country.js'
 import CountryList from '../components/CountryList';
-import '../css/map.css';
 
 
 const Map = (props) => {

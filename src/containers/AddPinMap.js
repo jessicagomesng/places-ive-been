@@ -2,7 +2,6 @@ import React from 'react';
 import AddPin from '../components/AddPin'
 import pin from '../css/images/pin.png'
 
-
 class AddPinMap extends React.Component {
     constructor(props) {
         super(props)
@@ -64,7 +63,7 @@ class AddPinMap extends React.Component {
         return (
             <div id="map-container">
                 <p className="instruction">Click anywhere on the map to place your pin, then fill in the form to create your memory!</p>
-                <svg xmlns="http://www.w3.org/2000/svg" width="1000" height="684" fill="#ececec" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="0.2" version="1.2" onMouseDown={this._handleClick} ref={this.mapRef}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="1000" height="684" fill="#ececec" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="0.2" version="1.2" onMouseDown={this._handleClick} ref={this.mapRef} className="add-pin-map">
                     { this.props.map.countries.map( (country) => {
                         let status;
                         this.props.user.countries.find((userCountry) => userCountry.id === country.id) ? status = 'visited add-pin' : status = 'unvisited add-pin';

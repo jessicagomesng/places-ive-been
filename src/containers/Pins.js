@@ -1,5 +1,4 @@
 import React from 'react';
-import '../css/map.css';
 import Pin from '../components/Pin'
 import PinShow from '../components/PinShow'
 import EditPin from '../components/EditPin'

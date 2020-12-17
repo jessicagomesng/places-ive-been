@@ -121,3 +121,20 @@ div.preview {
 img.user-image {
   max-width: 50%;
 }
+
+path {
+  fill: #FFF;
+}
+
+path.visited {
+  fill: #add8e6;
+}
+
+path.main-map:hover { 
+  fill: #D3D3D3;
+  cursor: crosshair;
+}
+
+.add-pin-map:hover {
+  cursor: crosshair;
+}
