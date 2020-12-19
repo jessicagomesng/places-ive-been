@@ -33,8 +33,10 @@ class SignUp extends Component {
 
         axios.post('http://localhost:3001/users', {user}, {withCredentials: true})
         .then(response => {
+            console.log(response);
             if (response.data.status === 'created') {
-                this.props.handleLogin(response.data)
+                sessionStorage.setItem('jwt', response.data.token)
+                this.props.logIn(response.data)
                 this.redirect()
             } else {
                 this.setState({
@@ -46,22 +48,20 @@ class SignUp extends Component {
     };
     
     redirect = () => {
-        this.props.history.push('/')
+        this.props.history.push('/map')
     }
 
     handleErrors = () => {
         if (this.state.errors !== '') {
             return (
                 <div>
-                    <ul>
-                        {this.state.errors.map((error, index) => {
-                            return <li key={index}>{error}</li>
-                        })}
-                    </ul>
+                    {this.state.errors.map((error, index) => {
+                        return <p key={index}>{error}</p>
+                    })}
                 </div>
             )
         }
-        return '';
+        return null;
     }
 
     render() {

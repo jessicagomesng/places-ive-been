@@ -53,10 +53,10 @@ class App extends Component {
 
         <Switch>
           <Route exact path="/signup">
-            <SignUp />
+            <SignUp logIn={this.props.logIn}/>
           </Route>
           <Route exact path="/login">
-            <LogIn logIn={this.props.logIn} isLoggedIn={this.props.isLoggedIn} />
+            <LogIn logIn={this.props.logIn} />
           </Route>
           <ProtectedRoute path="/map" loggedIn={this.props.isLoggedIn} component={Map} fetchCountries={this.props.fetchCountries} visitCountry={this.props.visitCountry} map={this.props.map} user={this.props.user} logOut={this.props.logOut} />
           <ProtectedRoute path="/pins" loggedIn={this.props.isLoggedIn} component={Pins} fetchCountries={this.props.fetchCountries} fetchPins={this.props.fetchPins} editPin={this.props.editPin} deletePin={this.props.deletePin} map={this.props.map} user={this.props.user} pins={this.props.pins} />

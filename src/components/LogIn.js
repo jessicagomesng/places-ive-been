@@ -50,18 +50,18 @@ class LogIn extends Component {
     }
 
     handleErrors = () => {
-        if (this.state.errors !== '') { 
+        if (this.state.errors !== '') {
             return (
                 <div>
-                    <ul>
-                        {this.state.errors.map((error, index) => {
-                            return <li key={index}>{error}</li>
-                        })}
-                    </ul>
+                    {this.state.errors.map((error, index) => {
+                        return <p key={index}>{error}</p>
+                    })}
                 </div>
             )
         }
+        return null;
     }
+
 
     render() {
         return (
