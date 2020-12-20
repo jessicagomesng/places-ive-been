@@ -6,9 +6,11 @@ import CountryList from '../components/CountryList';
 
 
 const Map = (props) => {
+    const { fetchCountries } = props;
+
     React.useEffect( () => {
-        props.fetchCountries()
-    }, [])
+        fetchCountries()
+    }, [fetchCountries])
 
     if (props.map.loading) { 
         return (

@@ -78,8 +78,9 @@ class AddPinMap extends React.Component {
                     <circle cx="521" cy="266.6"></circle>
                 </svg> 
                 
-                {/* display temporary pin marker at correct X and Y positions */}
-                {this.state.showImage ? <img src={pin} style={{position: 'absolute', top: this.state.yCoord + 'px', left: this.state.xCoord + 'px'}} ref={this.markerRef} className="pin" /> : null }
+                {/* render a temporary pin marker where the user clicked */}
+                {this.state.showImage ? <img src={pin} style={{position: 'absolute', top: this.state.yCoord + 'px', left: this.state.xCoord + 'px'}} ref={this.markerRef} className="pin" alt="temporary pin"/> : null }
+                {/* display the add pin form */}
                 {this.state.showForm ? <AddPin addAPin={addAPin} userID={user.id} xPerc={this.state.xPerc} yPerc={this.state.yPerc} /> : null}
             </div>
         )

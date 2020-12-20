@@ -58,7 +58,8 @@ class Pins extends React.Component {
                     // use % dimensions of pin coordinates to accurately place pin in browser
                     let x = (pin.xPerc * this.state.rect.width) + this.state.rect.left 
                     let y = (pin.yPerc * this.state.rect.height) + this.state.rect.top 
-                    return <Pin key={pin.id} xCoord={x} yCoord={y} caption={pin.caption} img={pin.img} location={pin.location} id={pin.id}/>
+                    // render pins for each pin in collection
+                    return <Pin key={pin.id} xCoord={x} yCoord={y} id={pin.id}/>
                 }
                 )}
             </>

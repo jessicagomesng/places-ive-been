@@ -7,9 +7,6 @@ class Pin extends React.Component {
         super(props)
         this.imgRef = React.createRef();
         this._onButtonClick = this._onButtonClick.bind(this);
-        this.state = {
-            showComponent: false
-        }
     }
 
     componentDidMount() {
@@ -17,11 +14,11 @@ class Pin extends React.Component {
     }
 
     _onButtonClick() {
-        this.setState({ showComponent: true })
         window.scrollTo(0,document.body.scrollHeight);
     }
 
     positionMarker() {
+        // position pin once component has mounted and reference has been established
         let img = this.imgRef.current;
         img.style.position = "absolute";
         img.style.left = this.props.xCoord + 'px';

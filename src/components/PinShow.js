@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 
 const PinShow = ({match, pins}) => {
+    // find specific pin in collection from URL parameters 
     let pin = pins.find((pin) => pin.id == match.params.pinId)
     return (
         <div>
