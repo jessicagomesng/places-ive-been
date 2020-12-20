@@ -19,11 +19,13 @@ class AddPinMap extends React.Component {
     }
 
     _handleClick(event) {
+        // set x and y coordinates of temporary marker by minusing 1/2 of the marker's width and the marker's height 
         this.setState({
             showImage: true,
             xCoord: event.pageX - 7.5,
             yCoord: event.pageY - 39.55
         })
+        // scroll to bottom of page to access form
         window.scrollTo(0,document.body.scrollHeight);
         console.log(event.clientX, event.clientY)
         console.log(event.pageX, event.pageY)
@@ -37,16 +39,17 @@ class AddPinMap extends React.Component {
 
     componentDidUpdate(prevProps, prevState) {
         if (this.state.xCoord !== prevState.xCoord) {
+            // calculate distance between map and window
             const outerRect = this.mapRef.current.getBoundingClientRect();
-            console.log(outerRect)
 
             if (this.markerRef.current) {
+                // calculate distance between pin and window
                 const innerRect = this.markerRef.current.getBoundingClientRect();
-                console.log(innerRect)
-
+                // calculate distance between pin and map top border
                 let topDiff = innerRect.top - outerRect.top 
+                // calculate distance between pin and map left border
                 let leftDiff = innerRect.left - outerRect.left 
-        
+                // calculate % top/left distances of map for accurate pin placement
                 let leftPerc = Math.round(leftDiff/outerRect.width * 100) / 100
                 let topPerc = Math.round(topDiff/outerRect.height * 100) / 100
                 
@@ -60,13 +63,14 @@ class AddPinMap extends React.Component {
     }
 
     render() {
+        let { map, user, addAPin } = this.props
         return (
             <div id="map-container">
                 <p className="instruction">Click anywhere on the map to place your pin, then fill in the form to create your memory!</p>
                 <svg xmlns="http://www.w3.org/2000/svg" width="1000" height="684" fill="#ececec" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="0.2" version="1.2" onMouseDown={this._handleClick} ref={this.mapRef} className="add-pin-map">
-                    { this.props.map.countries.map( (country) => {
+                    { map.countries.map( (country) => {
                         let status;
-                        this.props.user.countries.find((userCountry) => userCountry.id === country.id) ? status = 'visited add-pin' : status = 'unvisited add-pin';
+                        user.countries.find((userCountry) => userCountry.id === country.id) ? status = 'visited add-pin' : status = 'unvisited add-pin';
                         return <path key={country.id} d={country.path} id={country.abbreviation} name={country.name} className={status}/>
                     } )}
                     <circle cx="399.9" cy="390.8"></circle>
@@ -74,8 +78,9 @@ class AddPinMap extends React.Component {
                     <circle cx="521" cy="266.6"></circle>
                 </svg> 
                 
+                {/* display temporary pin marker at correct X and Y positions */}
                 {this.state.showImage ? <img src={pin} style={{position: 'absolute', top: this.state.yCoord + 'px', left: this.state.xCoord + 'px'}} ref={this.markerRef} className="pin" /> : null }
-                {this.state.showForm ? <AddPin addAPin={this.props.addAPin} userID={this.props.user.id} xPerc={this.state.xPerc} yPerc={this.state.yPerc} /> : null}
+                {this.state.showForm ? <AddPin addAPin={addAPin} userID={user.id} xPerc={this.state.xPerc} yPerc={this.state.yPerc} /> : null}
             </div>
         )
     }

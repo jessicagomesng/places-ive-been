@@ -9,6 +9,7 @@ class Pins extends React.Component {
         super(props)
         this.mapRef = React.createRef();
         this.renderPins = this.renderPins.bind(this);
+        // set initial state of rectangle to null
         this.state = {
             rect: null,
             displayPins: false
@@ -20,7 +21,7 @@ class Pins extends React.Component {
         this.props.fetchPins(this.props.user.id)
         window.scrollTo(0, 0);
         let rect = this.mapRef.current.getBoundingClientRect();
-
+        // calculate distance between map and window
         this.setState({
             rect: rect,
             displayPins: true
@@ -28,13 +29,14 @@ class Pins extends React.Component {
     }
 
     render() {
+        const { map, user, pins, editPin, deletePin, match } = this.props 
         return (
             <div>
                 <p className="instruction">Click on a pin to view/edit/delete your memory!</p>
                 <svg xmlns="http://www.w3.org/2000/svg" width="1000" height="684" fill="#ececec" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="0.2" version="1.2" ref={this.mapRef}>
-                    { this.props.map.countries.map( (country) => {
+                    { map.countries.map( (country) => {
                         let status;
-                        this.props.user.countries.find((userCountry) => userCountry.id === country.id) ? status = 'visited' : status = 'unvisited';
+                        user.countries.find((userCountry) => userCountry.id === country.id) ? status = 'visited' : status = 'unvisited';
                         return <path key={country.id} d={country.path} id={country.abbreviation} name={country.name} className={status}/>
                     } )}
                     <circle cx="399.9" cy="390.8"></circle>
@@ -43,8 +45,8 @@ class Pins extends React.Component {
                 </svg>
 
                 {this.state.displayPins && this.renderPins()}
-                <Route path={`${this.props.match.url}/:pinId`} render={routerProps => <PinShow {...routerProps} pins={this.props.pins.pins}  /> } />
-                <Route path={`${this.props.match.url}/:pinId/edit`} render={routerProps => <EditPin {...routerProps} pins={this.props.pins.pins} editPin={this.props.editPin} deletePin={this.props.deletePin} /> } />
+                <Route path={`${match.url}/:pinId`} render={routerProps => <PinShow {...routerProps} pins={pins.pinCollection}  /> } />
+                <Route path={`${match.url}/:pinId/edit`} render={routerProps => <EditPin {...routerProps} pins={pins.pinCollection} editPin={editPin} deletePin={deletePin} /> } />
             </div>
         )
     }
@@ -52,10 +54,10 @@ class Pins extends React.Component {
     renderPins() {
         return (
             <>
-                {this.props.pins.pins.map( (pin) => { 
-
-                    let x = (pin.xCoord * this.state.rect.width) + this.state.rect.left 
-                    let y = (pin.yCoord * this.state.rect.height) + this.state.rect.top 
+                {this.props.pins.pinCollection.map( (pin) => { 
+                    // use % dimensions of pin coordinates to accurately place pin in browser
+                    let x = (pin.xPerc * this.state.rect.width) + this.state.rect.left 
+                    let y = (pin.yPerc * this.state.rect.height) + this.state.rect.top 
                     return <Pin key={pin.id} xCoord={x} yCoord={y} caption={pin.caption} img={pin.img} location={pin.location} id={pin.id}/>
                 }
                 )}

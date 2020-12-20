@@ -21,7 +21,7 @@ export const fetchPins = (userID) => {
             return response.json()
         })
         .then(responseJSON => {
-            dispatch({type: 'ADD_PINS', pins: responseJSON})
+            dispatch({type: 'ADD_PINS', pinCollection: responseJSON})
         })
     }
 }
@@ -43,7 +43,6 @@ export const addAPin = (pin) => {
     return (dispatch) => {
         axios.post('http://localhost:3001/pins', {pin}, {withCredentials: true})
         .then(response => {
-            console.log(response)
             dispatch({type: 'ADD_PIN', payload: response.data})
         })
     }
@@ -53,7 +52,6 @@ export const editPin = (pin) => {
     return (dispatch) => {
         axios.patch(`http://localhost:3001/pins/${pin.id}`, {pin}, {withCredentials: true})
         .then(response => {
-            console.log(response) 
             dispatch({type: 'EDIT_PIN', payload: response.data})
         })
     }
@@ -63,7 +61,6 @@ export const deletePin = (id) => {
     return (dispatch) => {
         axios.delete(`http://localhost:3001/pins/${id}`, {withCredentials: true})
         .then(response => {
-            console.log(response)
             dispatch({type: 'DELETE_PIN', payload: response.data})
         })
     }

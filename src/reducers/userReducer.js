@@ -1,7 +1,7 @@
 export default function userReducer(state = {}, action) {
     switch (action.type) {
         case "LOG_IN":
-            return action.user.user
+            return action.data.user
 
         case "LOG_OUT":
             return {}

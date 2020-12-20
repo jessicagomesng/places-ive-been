@@ -84,7 +84,7 @@ const mapDispatchToProps = (dispatch) => {
     addAPin: (pinData) => dispatch(addAPin(pinData)),
     editPin: (pinData) => dispatch(editPin(pinData)),
     deletePin: (pinId) => dispatch(deletePin(pinId)),
-    logIn: (user) => dispatch({type: 'LOG_IN', user}),
+    logIn: (data) => dispatch({type: 'LOG_IN', data}),
     logOut: (data) => dispatch({type: 'LOG_OUT', data}),
     fetchCountries: () => dispatch(fetchCountries()),
     fetchPins: (userID) => dispatch(fetchPins(userID)),
