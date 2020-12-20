@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const PinShow = ({match, pins}) => {
     // find specific pin in collection from URL parameters 
-    let pin = pins.find((pin) => pin.id == match.params.pinId)
+    let pin = pins.find((pin) => pin.id === parseInt(match.params.pinId))
     return (
         <div>
             <img src={pin.img} alt="your memory" className="user-image"/>

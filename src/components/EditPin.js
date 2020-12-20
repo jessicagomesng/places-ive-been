@@ -29,7 +29,7 @@ class EditPin extends React.Component {
     
     componentDidMount() {
         // find specific pin in collection from URL parameters 
-        let pin = this.props.pins.find((pin) => pin.id == this.props.match.params.pinId)
+        let pin = this.props.pins.find((pin) => pin.id === parseInt(this.props.match.params.pinId))
         // set state to display pin's old data
         this.setState({
             img: pin.img,
