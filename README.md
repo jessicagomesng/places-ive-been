@@ -23,8 +23,11 @@ From the application homepage, the user may:
 * Drop pins at different locations on a map and save images from their Facebook/Instagram/other links to those pins to record memories to look back on later
 * Edit and delete existing pins
 
-Contributing:
+## Contributing:
 Bug reports and pull requests are welcome on GitHub at https://github.com/jessicagomesng/places-ive-been. This project is intended to be a safe, welcoming space for collaboration. Contributors are expected to adhere to the Contributor Covenant code of conduct.
 
-License:
+## License:
 The system is available as open source under the terms of the MIT License.
+
+## Walkthrough: 
+You may view a video walkthrough of this application [here](https://youtu.be/gdvJSoXsqpY).
