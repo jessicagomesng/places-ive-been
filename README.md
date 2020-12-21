@@ -1,3 +1,5 @@
+<img src="https://github.com/jessicagomesng/places-ive-been/blob/main/src/css/images/logo.png" alt="Places I've Been logo" />
+
 # Places I've Been
 
 This application was built using React with Redux and a Rails API, available at [https://github.com/jessicagomesng/places-ive-been-backend](https://github.com/jessicagomesng/places-ive-been-backend). This application enables wanderlusters to log the conuntries they've visited across Europe, as well as to add pins to log memories from places they've traveled to! 
