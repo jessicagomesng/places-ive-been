@@ -58,10 +58,21 @@ label {
   letter-spacing: 2px;
 }
 
-form, div#country-list{
+form {
   background-color: #add8e6;
   padding: 10px;
-  width: 500px;
+  width: 80vh;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+div#country-list {
+  background-color: #add8e6;
+  padding: 10px;
+  width: 60vh;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -138,4 +149,26 @@ path.main-map:hover {
 
 .add-pin-map:hover {
   cursor: crosshair;
+}
+
+div.map-container {
+  width: 160vh;
+  height: auto;
+  /* width: 1000px;
+  height: 684px; */
+  position: relative;
+  margin: auto;
+}
+
+svg#map {
+  display: block;
+  max-width: 100%;
+  /* height: auto; */
+  position: absolute;
+  margin: 0 auto;
+  /* left: calc(25%); */
+  /* top: calc(0%); */
+  /* left: calc(50%); */
+  /* width: 1000px;
+  height: 684px; */
 }
