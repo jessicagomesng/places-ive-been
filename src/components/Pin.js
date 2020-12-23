@@ -21,17 +21,17 @@ class Pin extends React.Component {
         // position pin once component has mounted and reference has been established
         let img = this.imgRef.current;
         img.style.position = "absolute";
-        img.style.left = this.props.xCoord + 'px';
-        img.style.top = this.props.yCoord + 'px';
+        // img.style.left = this.props.xCoord + 'px';
+        // img.style.top = this.props.yCoord + 'px';
+        img.style.left = this.props.xPerc * 100 + "%";
+        img.style.top = this.props.yPerc * 100 + "%";
     }
 
     render() {
         return (
-        <div className="preview">
-            <div>
-                <Link to={`/pins/${this.props.id}`} ><img src={pin} style={{width: "1%"}} alt="pin" ref={this.imgRef} onClick={this._onButtonClick} className="pin"/></Link>
-            </div>
-        </div>
+            <>
+                <Link to={`/pins/${this.props.id}`} ><img src={pin} style={{width: "1%", height: "4%"}} alt="pin" ref={this.imgRef} onClick={this._onButtonClick} className="pin"/></Link>
+            </>
         )
     }
 }

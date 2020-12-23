@@ -6,6 +6,7 @@ class AddPinMap extends React.Component {
     constructor(props) {
         super(props)
         this._handleClick = this._handleClick.bind(this)
+        this.containerRef = React.createRef();
         this.mapRef = React.createRef();
         this.markerRef = React.createRef();
         this.state = {
@@ -20,28 +21,33 @@ class AddPinMap extends React.Component {
 
     _handleClick(event) {
         // set x and y coordinates of temporary marker by minusing 1/2 of the marker's width and the marker's height 
+        window.scrollTo(0, 0)
+        let container = this.containerRef.current;
+        let rect = this.containerRef.current.getBoundingClientRect();
+        let halfMarkerWidth = 0.01 * container.offsetWidth / 2;
+        let markerHeight = 0.04 * container.offsetHeight;
+
         this.setState({
             showImage: true,
-            xCoord: event.pageX - 7.5,
-            yCoord: event.pageY - 39.55
+            // initially position the pin according to absolute coordinates
+            xCoord: event.pageX - rect.x - halfMarkerWidth,
+            yCoord: event.pageY - rect.y - markerHeight
         })
-        // // scroll to bottom of page to access form
-        window.scrollTo(0,document.body.scrollHeight);
-        console.log(event.clientX, event.clientY)
         console.log(event.pageX, event.pageY)
     }
 
 
     componentDidMount() {
-        this.props.fetchCountries()
+        this.props.fetchCountries();
     }
 
     componentDidUpdate(prevProps, prevState) {
         if (this.state.xCoord !== prevState.xCoord) {
             // calculate distance between map and window
             const outerRect = this.mapRef.current.getBoundingClientRect();
+            let tempMarker = this.markerRef.current;
 
-            if (this.markerRef.current) {
+            if (tempMarker) {
                 // calculate distance between pin and window
                 const innerRect = this.markerRef.current.getBoundingClientRect();
                 // calculate distance between pin and map top border
@@ -57,6 +63,13 @@ class AddPinMap extends React.Component {
                     xPerc: leftPerc,
                     yPerc: topPerc
                 })
+
+                // reposition the pin with percentage coordinates to make responsive 
+                tempMarker.style.left = leftPerc * 100 + "%";
+                tempMarker.style.top = topPerc * 100 + "%";
+                window.scrollTo(0,document.body.scrollHeight);
+                console.log(leftPerc);
+                console.log(topPerc);
             }
         }
     }
@@ -66,7 +79,7 @@ class AddPinMap extends React.Component {
         return (
             <div>
                 <p className="instruction">Click anywhere on the map to place your pin, then fill in the form to create your memory!</p>
-                <div className="add-pin-container">
+                <div className="add-pin-container" ref={this.containerRef}>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 684" preserveAspectRatio="xMidYMid meet"  fill="#ececec" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="0.2" version="1.2" onMouseDown={this._handleClick} ref={this.mapRef} id="add-pin-map">
                         { map.countries.map( (country) => {
                             let status;
@@ -79,7 +92,7 @@ class AddPinMap extends React.Component {
                     </svg> 
                     
                     {/* render a temporary pin marker where the user clicked */}
-                    {this.state.showImage ? <img src={pin} style={{position: 'absolute', top: this.state.yCoord + 'px', left: this.state.xCoord + 'px', width: "1%"}} ref={this.markerRef} className="pin" alt="temporary pin"/> : null }
+                    {this.state.showImage ? <img src={pin} style={{position: 'absolute', top: this.state.yCoord + 'px', left: this.state.xCoord + 'px', width: "1%", height: "4%"}} ref={this.markerRef} className="pin" alt="temporary pin"/> : null }
                 </div>
                 {/* display the add pin form on click */}
                 {this.state.showForm ? <AddPin addAPin={addAPin} userID={user.id} xPerc={this.state.xPerc} yPerc={this.state.yPerc} /> : null}

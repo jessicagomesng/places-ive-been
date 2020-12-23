@@ -147,6 +147,10 @@ path.main-map:hover {
   cursor: crosshair;
 }
 
+div.add-pin-container, div.view-pins {
+  position: relative;
+}
+
 /* div.map-container {
   width: 160vh;
   height: auto;
