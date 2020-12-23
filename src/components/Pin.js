@@ -29,7 +29,7 @@ class Pin extends React.Component {
         return (
         <div className="preview">
             <div>
-                <Link to={`/pins/${this.props.id}`} ><img src={pin} alt="pin" ref={this.imgRef} onClick={this._onButtonClick} className="pin"/></Link>
+                <Link to={`/pins/${this.props.id}`} ><img src={pin} style={{width: "1%"}} alt="pin" ref={this.imgRef} onClick={this._onButtonClick} className="pin"/></Link>
             </div>
         </div>
         )

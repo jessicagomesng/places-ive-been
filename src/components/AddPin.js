@@ -38,7 +38,7 @@ class AddPin extends React.Component {
 
     render() {
         return ( 
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit} id="add-pin-form">
                 <h3>Add a Memory:</h3>
                 <input type="text" name="img" placeholder="link your image here" onChange={this.handleChange} required/><br />
                 <input type="text" name="location" placeholder="location (eg: Paris, FR)" onChange={this.handleChange} required/><br />

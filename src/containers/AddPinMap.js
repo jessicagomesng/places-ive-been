@@ -25,11 +25,10 @@ class AddPinMap extends React.Component {
             xCoord: event.pageX - 7.5,
             yCoord: event.pageY - 39.55
         })
-        // scroll to bottom of page to access form
+        // // scroll to bottom of page to access form
         window.scrollTo(0,document.body.scrollHeight);
         console.log(event.clientX, event.clientY)
         console.log(event.pageX, event.pageY)
-        console.log(this.state.showImage)
     }
 
 
@@ -65,22 +64,24 @@ class AddPinMap extends React.Component {
     render() {
         let { map, user, addAPin } = this.props
         return (
-            <div id="map-container">
+            <div>
                 <p className="instruction">Click anywhere on the map to place your pin, then fill in the form to create your memory!</p>
-                <svg xmlns="http://www.w3.org/2000/svg" width="1000" height="684" fill="#ececec" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="0.2" version="1.2" onMouseDown={this._handleClick} ref={this.mapRef} className="add-pin-map">
-                    { map.countries.map( (country) => {
-                        let status;
-                        user.countries.find((userCountry) => userCountry.id === country.id) ? status = 'visited add-pin' : status = 'unvisited add-pin';
-                        return <path key={country.id} d={country.path} id={country.abbreviation} name={country.name} className={status}/>
-                    } )}
-                    <circle cx="399.9" cy="390.8"></circle>
-                    <circle cx="575.4" cy="412"></circle>
-                    <circle cx="521" cy="266.6"></circle>
-                </svg> 
-                
-                {/* render a temporary pin marker where the user clicked */}
-                {this.state.showImage ? <img src={pin} style={{position: 'absolute', top: this.state.yCoord + 'px', left: this.state.xCoord + 'px'}} ref={this.markerRef} className="pin" alt="temporary pin"/> : null }
-                {/* display the add pin form */}
+                <div className="add-pin-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 684" preserveAspectRatio="xMidYMid meet"  fill="#ececec" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="0.2" version="1.2" onMouseDown={this._handleClick} ref={this.mapRef} id="add-pin-map">
+                        { map.countries.map( (country) => {
+                            let status;
+                            user.countries.find((userCountry) => userCountry.id === country.id) ? status = 'visited add-pin' : status = 'unvisited add-pin';
+                            return <path key={country.id} d={country.path} id={country.abbreviation} name={country.name} className={status}/>
+                        } )}
+                        <circle cx="399.9" cy="390.8"></circle>
+                        <circle cx="575.4" cy="412"></circle>
+                        <circle cx="521" cy="266.6"></circle>
+                    </svg> 
+                    
+                    {/* render a temporary pin marker where the user clicked */}
+                    {this.state.showImage ? <img src={pin} style={{position: 'absolute', top: this.state.yCoord + 'px', left: this.state.xCoord + 'px', width: "1%"}} ref={this.markerRef} className="pin" alt="temporary pin"/> : null }
+                </div>
+                {/* display the add pin form on click */}
                 {this.state.showForm ? <AddPin addAPin={addAPin} userID={user.id} xPerc={this.state.xPerc} yPerc={this.state.yPerc} /> : null}
             </div>
         )

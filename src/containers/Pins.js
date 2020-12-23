@@ -33,7 +33,7 @@ class Pins extends React.Component {
         return (
             <div>
                 <p className="instruction">Click on a pin to view/edit/delete your memory!</p>
-                <svg xmlns="http://www.w3.org/2000/svg" width="1000" height="684" fill="#ececec" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="0.2" version="1.2" ref={this.mapRef}>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 684" preserveAspectRatio="xMidYMid meet"  fill="#ececec" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="0.2" version="1.2" ref={this.mapRef}>
                     { map.countries.map( (country) => {
                         let status;
                         user.countries.find((userCountry) => userCountry.id === country.id) ? status = 'visited' : status = 'unvisited';

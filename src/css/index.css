@@ -21,14 +21,10 @@ img#nav-logo {
   width: 30%;
 }
 
-img.pin {
-  width: 15px;
-}
-
 a {
   letter-spacing: 1px;
   margin: 5px;
-  font-size: 12px;
+  font-size: 0.9vw;
   text-transform: uppercase;
   color: #000;
   text-decoration: none;
@@ -43,7 +39,7 @@ body {
   margin: 0;
   font-family: 'quicksandlight', 'Roboto', 'Helvetica Neue',
     sans-serif;
-  font-size: 14px;
+  font-size: 1vw;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -101,7 +97,7 @@ button, input[type="submit"] {
   margin: 5px;
   text-align: center;
   display: inline-block;
-  font-size: 12px;
+  font-size: 0.9vw;
   width: 80px;
 }
 
@@ -116,7 +112,7 @@ p.instruction {
 
 h3 {
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: 1vw;
   font-weight: bold;
 }
 
@@ -147,15 +143,13 @@ path.main-map:hover {
   cursor: crosshair;
 }
 
-.add-pin-map:hover {
+#add-pin-map:hover {
   cursor: crosshair;
 }
 
-div.map-container {
+/* div.map-container {
   width: 160vh;
   height: auto;
-  /* width: 1000px;
-  height: 684px; */
   position: relative;
   margin: auto;
 }
@@ -163,12 +157,29 @@ div.map-container {
 svg#map {
   display: block;
   max-width: 100%;
-  /* height: auto; */
   position: absolute;
   margin: 0 auto;
-  /* left: calc(25%); */
-  /* top: calc(0%); */
-  /* left: calc(50%); */
-  /* width: 1000px;
-  height: 684px; */
-}
+} */
+
+/* svg#add-pin-map {
+  display: block;
+  max-width: 100%;
+  position: absolute;
+  margin: 0 auto;
+} */
+
+/* div.add-pin-container {
+  width: 160vh;
+  height: auto;
+  position: relative;
+  margin: 0 auto;
+} */
+
+/* form#add-pin-form {
+  width: 40vh;
+  position: absolute;
+  margin-top: 20vh;
+  margin-bottom: 0;
+  margin-left: 160vh;
+  margin-right: 0;
+} */
