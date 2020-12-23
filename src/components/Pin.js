@@ -21,8 +21,6 @@ class Pin extends React.Component {
         // position pin once component has mounted and reference has been established
         let img = this.imgRef.current;
         img.style.position = "absolute";
-        // img.style.left = this.props.xCoord + 'px';
-        // img.style.top = this.props.yCoord + 'px';
         img.style.left = this.props.xPerc * 100 + "%";
         img.style.top = this.props.yPerc * 100 + "%";
     }

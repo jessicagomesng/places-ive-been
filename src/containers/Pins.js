@@ -7,12 +7,9 @@ import { Route } from 'react-router-dom';
 class Pins extends React.Component { 
     constructor(props) {
         super(props)
-        this.mapRef = React.createRef();
         this.containerRef = React.createRef();
         this.renderPins = this.renderPins.bind(this);
-        // set initial state of rectangle to null
         this.state = {
-            rect: null,
             displayPins: false
         }
     }
@@ -20,11 +17,7 @@ class Pins extends React.Component {
     componentDidMount() {
         this.props.fetchCountries()
         this.props.fetchPins(this.props.user.id)
-        window.scrollTo(0, 0);
-        let rect = this.containerRef.current.getBoundingClientRect();
-        // calculate distance between map and window
         this.setState({
-            rect: rect,
             displayPins: true
         })
     }
@@ -35,7 +28,7 @@ class Pins extends React.Component {
             <div>
                 <p className="instruction">Click on a pin to view/edit/delete your memory!</p>
                 <div className="add-pin-container" ref={this.containerRef}>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 684" preserveAspectRatio="xMidYMid meet"  fill="#ececec" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="0.2" version="1.2" ref={this.mapRef}>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 684" preserveAspectRatio="xMidYMid meet"  fill="#ececec" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="0.2" version="1.2">
                         { map.countries.map( (country) => {
                             let status;
                             user.countries.find((userCountry) => userCountry.id === country.id) ? status = 'visited' : status = 'unvisited';
@@ -58,11 +51,8 @@ class Pins extends React.Component {
         return (
             <>
                 {this.props.pins.pinCollection.map( (pin) => { 
-                    // use % dimensions of pin coordinates to accurately place pin in browser
-                    let x = (pin.xPerc * this.state.rect.width) + this.state.rect.left 
-                    let y = (pin.yPerc * this.state.rect.height) + this.state.rect.top 
                     // render pins for each pin in collection
-                    return <Pin key={pin.id} xCoord={x} yCoord={y} id={pin.id} xPerc={pin.xPerc} yPerc={pin.yPerc}/>
+                    return <Pin key={pin.id} id={pin.id} xPerc={pin.xPerc} yPerc={pin.yPerc}/>
                 }
                 )}
             </>
