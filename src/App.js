@@ -15,15 +15,18 @@ import PublicRoute from './PublicRoute'
 import './css/App.css';
 
 class App extends Component {
-
   handleLogOut = () => {
     axios.post('http://localhost:3001/logout', {withCredentials: true})
     .then(response => {
       sessionStorage.removeItem('jwt');
-      console.log(response);
       this.props.logOut(response.data);
-      console.log(this.props)
     })
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.user !== this.props.user && this.props.user.id) {
+      this.props.fetchPins(this.props.user.id)
+    }
   }
 
   render() {
@@ -59,7 +62,7 @@ class App extends Component {
             <LogIn logIn={this.props.logIn} />
           </Route>
           <ProtectedRoute path="/map" loggedIn={this.props.isLoggedIn} component={Map} fetchCountries={this.props.fetchCountries} visitCountry={this.props.visitCountry} map={this.props.map} user={this.props.user} logOut={this.props.logOut} />
-          <ProtectedRoute path="/pins" loggedIn={this.props.isLoggedIn} component={Pins} fetchCountries={this.props.fetchCountries} fetchPins={this.props.fetchPins} editPin={this.props.editPin} deletePin={this.props.deletePin} map={this.props.map} user={this.props.user} pins={this.props.pins} />
+          <ProtectedRoute path="/pins" loggedIn={this.props.isLoggedIn} component={Pins} editPin={this.props.editPin} deletePin={this.props.deletePin} map={this.props.map} user={this.props.user} pins={this.props.pins} />
           <ProtectedRoute path="/add-a-pin" loggedIn={this.props.isLoggedIn} component={AddPinMap} fetchCountries={this.props.fetchCountries} map={this.props.map} user={this.props.user} addAPin={this.props.addAPin} />
         </Switch>
         </div>

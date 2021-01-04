@@ -41,9 +41,9 @@ class EditPin extends React.Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit} id="edit-pin">
-                <input type="text" name="img" value={this.state.img} onChange={this.handleChange} /><br />
-                <input type="text" name="caption" value={this.state.caption} onChange={this.handleChange} /><br />
-                <input type="text" name="location" value={this.state.location} onChange={this.handleChange} /><br />
+                <input type="text" name="img" value={this.state.img} onChange={this.handleChange} required/><br />
+                <input type="text" name="caption" value={this.state.caption} onChange={this.handleChange} required/><br />
+                <input type="text" name="location" value={this.state.location} onChange={this.handleChange} required/><br />
                 <input type="submit" value="Edit Pin" />
                 <button onClick={this.handleDelete}>Delete</button>
             </form>

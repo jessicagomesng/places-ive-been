@@ -9,7 +9,7 @@ const Map = (props) => {
     const { fetchCountries } = props;
 
     React.useEffect( () => {
-        fetchCountries()
+        fetchCountries();
     }, [fetchCountries])
 
     if (props.map.loading) { 
