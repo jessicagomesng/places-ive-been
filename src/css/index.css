@@ -87,6 +87,15 @@ input {
   width: 200px;
 }
 
+button.like {
+  border: none;
+}
+
+button.like:hover {
+  border: 1px solid black;
+  cursor: crosshair;
+}
+
 button, input[type="submit"] {
   font-family: 'quicksandlight';
   text-transform: uppercase;

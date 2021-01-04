@@ -1,4 +1,5 @@
 import React from 'react';
+import VotePin from './VotePin'
 import { Link } from 'react-router-dom'
 
 const PinShow = ({match, pins}) => {
@@ -10,7 +11,7 @@ const PinShow = ({match, pins}) => {
             <h3>{ pin.location }</h3>
             <h4>{ pin.caption }</h4>
             <Link to={`${match.url}/edit`}>Edit/Delete Pin</Link><br />
-
+            <VotePin /> 
             <button onClick={() => window.scrollTo(0,0)} id="scroll-up" title="Go to top">^</button>
         </div>
     )
