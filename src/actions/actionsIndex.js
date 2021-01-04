@@ -43,6 +43,7 @@ export const addAPin = (pin) => {
     return (dispatch) => {
         axios.post('http://localhost:3001/pins', {pin}, {withCredentials: true})
         .then(response => {
+            console.log(response);
             dispatch({type: 'ADD_PIN', payload: response.data})
         })
     }
