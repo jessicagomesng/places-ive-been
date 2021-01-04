@@ -17,15 +17,10 @@ class Pins extends React.Component {
     componentDidMount() {
         this.props.fetchCountries()
         this.props.fetchPins(this.props.user.id)
-    }
-
-    componentDidUpdate(prevProps) {
-        if (prevProps.pins !== this.props.pins) {
-            this.setState({
-                displayPins: true
-            })
-            console.log(this.props.pins)
-        }
+        console.log(this.props.pins)
+        this.setState({
+            displayPins: true
+        })
     }
 
     render() {
