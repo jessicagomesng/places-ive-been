@@ -26,6 +26,7 @@ class App extends Component {
   componentDidUpdate(prevProps) {
     if (prevProps.user !== this.props.user && this.props.user.id) {
       this.props.fetchPins(this.props.user.id)
+      this.props.fetchCountries()
     }
   }
 
@@ -61,7 +62,7 @@ class App extends Component {
           <Route exact path="/login">
             <LogIn logIn={this.props.logIn} />
           </Route>
-          <ProtectedRoute path="/map" loggedIn={this.props.isLoggedIn} component={Map} fetchCountries={this.props.fetchCountries} visitCountry={this.props.visitCountry} map={this.props.map} user={this.props.user} logOut={this.props.logOut} />
+          <ProtectedRoute path="/map" loggedIn={this.props.isLoggedIn} component={Map} visitCountry={this.props.visitCountry} map={this.props.map} user={this.props.user} logOut={this.props.logOut} />
           <ProtectedRoute path="/pins" loggedIn={this.props.isLoggedIn} component={Pins} editPin={this.props.editPin} deletePin={this.props.deletePin} map={this.props.map} user={this.props.user} pins={this.props.pins} />
           <ProtectedRoute path="/add-a-pin" loggedIn={this.props.isLoggedIn} component={AddPinMap} fetchCountries={this.props.fetchCountries} map={this.props.map} user={this.props.user} addAPin={this.props.addAPin} />
         </Switch>
