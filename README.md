@@ -4,6 +4,9 @@
 
 This application was built using React with Redux and a Rails API, available at [https://github.com/jessicagomesng/places-ive-been-backend](https://github.com/jessicagomesng/places-ive-been-backend). This application enables wanderlusters to log the conuntries they've visited across Europe, as well as to add pins to log memories from places they've traveled to! 
 
+You can visit and see this application in action yourself by visiting:
+https://places-ive-been-heroku.herokuapp.com/
+
 ## Getting Started
 
 To get started, fork and clone this repo, as well as the backend repo. Then, in this respository, run:
